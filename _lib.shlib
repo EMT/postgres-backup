@@ -6,7 +6,7 @@
 # s: This is a scheduled backup (organises into daily/weekly/monthly sub-folders)
 grab_opts() {
   IS_SCHEDULED=0
-  
+
   while getopts 'l:d:f:e:s' c
   do
     case $c in
@@ -68,9 +68,13 @@ aws_init() {
   if [ -z ${SUB_FOLDER} ]; then
     SUB_FOLDER=""
   else
+    case $SUB_FOLDER in
+      daily|weekly|monthly) SCHEDULE_TYPE=$SUB_FOLDER ;;
+    esac
     SUB_FOLDER="${SUB_FOLDER}/"  
   fi
 
+  S3_KEY=${S3_PREFIX:1}${SUB_FOLDER}${FILENAME}.sql.xz
   FULL_PATH=${S3_BUCKET}${S3_PREFIX}${SUB_FOLDER}${FILENAME}.sql.xz
 }
 
