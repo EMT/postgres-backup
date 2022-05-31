@@ -15,7 +15,7 @@ if [ $IS_SCHEDULED = 1 ]; then
     SCHEDULE_FOLDER="weekly"
   fi
 
-  if [ $DOM = 1 ]; then
+  if [ "$DOM" = '01' ]; then
     SCHEDULE_FOLDER="monthly"
   fi
 

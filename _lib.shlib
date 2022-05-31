@@ -82,7 +82,8 @@ local_init() {
   if [ -z ${SUB_FOLDER} ]; then
     SUB_FOLDER=""
   else
-    SUB_FOLDER="${SUB_FOLDER}/"  
+    SUB_FOLDER="${SUB_FOLDER}/"
+    mkdir -p /backup/${SUB_FOLDER}
   fi
 
   FULL_PATH=/backup/${SUB_FOLDER}${FILENAME}.sql.xz

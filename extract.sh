@@ -20,7 +20,7 @@ if [ "${SAVE_LOCATION}" = "s3" ]; then
 else
   local_init
   echo "Extracting dump from ${FULL_PATH}"
-  cp -f ${FULL_PATH} || exit 2
+  cp -f ${FULL_PATH} dump-tmp.sql.xz || exit 2
   xz -d dump-tmp.sql.xz
 
   if [ ! -z "$EXTRACT_TO" ]; then
